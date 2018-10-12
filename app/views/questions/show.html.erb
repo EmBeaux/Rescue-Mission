@@ -1,4 +1,25 @@
 <h1> <%= @question.title  %> </h1>
 <p><%= @question.description %> </p>
+<h3> Add answer! </h3>
+<%= render 'answers/form_answers' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Answer:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.description %></td>
+        <td><%= link_to 'Edit', edit_question_answer_path(answer) %></td>
+        <td><%= link_to 'Destroy', question_path(@question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Questions', questions_path %>

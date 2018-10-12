@@ -1,7 +1,9 @@
 <h1>LaunchoverFlow!</h1>
 
 <% @questions.each do |question| %>
-  <%= link_to "#{question["title"]}", question %><br>
+  <%= link_to "#{question["title"]}", question %>
+  <%= link_to 'Destroy', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Edit', edit_question_path(question) %><br>
 <% end %>
 
 <%= link_to "Submit Questions", new_question_path %>
